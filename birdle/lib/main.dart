@@ -11,15 +11,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Tile('A', HitType.hit), // NEW
+        appBar: AppBar(
+          title: Align(alignment: Alignment.centerLeft, child: Text('Birdle')),
         ),
+        body: Center(child: GamePage()),
       ),
     );
   }
 }
+
+
 
 
 
@@ -54,5 +57,31 @@ class Tile extends StatelessWidget {
   }
 }
 
+
+
+class GamePage extends StatelessWidget {
+  GamePage({super.key});
+  // This manages game logic, and is out of scope for this lesson.
+  final Game _game = Game();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        spacing: 5.0,
+        children: [
+          for (var guess in _game.guesses)
+            Row(
+              spacing: 5.0,
+              children: [
+                // We'll add the tiles here later.
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+}
 
 
