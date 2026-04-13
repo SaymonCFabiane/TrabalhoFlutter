@@ -13,14 +13,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Align(alignment: Alignment.centerLeft, child: Text('Birdle')),
-        ),
         body: Center(child: GamePage()),
       ),
     );
   }
 }
+
 
 
 
@@ -47,21 +45,16 @@ class Tile extends StatelessWidget {
           _ => Colors.white,
         },
       ),
-      child: Center(
-        child: Text(
-          letter.toUpperCase(),
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      ),
     );
   }
 }
 
 
 
+
 class GamePage extends StatelessWidget {
   GamePage({super.key});
-  // This manages game logic, and is out of scope for this lesson.
+
   final Game _game = Game();
 
   @override
@@ -75,13 +68,14 @@ class GamePage extends StatelessWidget {
             Row(
               spacing: 5.0,
               children: [
-                // We'll add the tiles here later.
-              ],
+                for (var letter in guess) Tile(letter.char, letter.type)
+              ]
             ),
         ],
       ),
     );
   }
 }
+
 
 
